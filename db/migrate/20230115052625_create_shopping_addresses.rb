@@ -4,7 +4,7 @@ class CreateShoppingAddresses < ActiveRecord::Migration[6.1]
       t.integer :customer_id
       t.string :postcode
       t.string :address
-      t.string  :name
+      t.string :name
 
 
       t.timestamps
