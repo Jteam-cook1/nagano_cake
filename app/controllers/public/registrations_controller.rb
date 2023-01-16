@@ -61,9 +61,46 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # end
 
   def new
+    @customer = Customer.new
   end
 
   def create
+    @customer = Customer.new(customer_params)
+    @customer.customer_id = current_customer.id
+
+  if @customer.save
+    redirect_to customer_path
+  else
+    render :new
+  end
+  end
+
+  def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :last_name_kana, :first_name_kana, :postcode, :address, :tel])
+  end
+
+  # If you have extra params to permit, append them to the sanitizer.
+  def configure_account_update_params
+    devise_parameter_sanitizer.permit(:account_update, keys: [:last_name, :first_name, :last_name_kana, :first_name_kana, :postcode, :address, :tel])
+  end
+
+  def update_resource(resource, params)
+    resource.update_without_password(params)
+  end
+
+  def after_update_path_for(resource)
+    customers_path
+  end
+
+  # The path used after sign up.
+  def after_sign_up_path_for(resource)
+    customers_path
+  end
+
+   private
+  def customer_params
+  	  params.require(:customer).permit(:is_active, :last_name, :first_name, :last_name_kana, :first_name_kana,
+  	                                   :phone_number, :email, :password, :postcode, :address)
   end
 
 end
