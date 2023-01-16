@@ -40,14 +40,14 @@ ActiveRecord::Schema.define(version: 2023_01_16_053554) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "first_name", default: "", null: false
-    t.string "last_name", default: "", null: false
-    t.string "last_name_kana", default: "", null: false
-    t.string "first_name_kana", default: "", null: false
-    t.integer "phone_number", null: false
-    t.integer "postcode", null: false
-    t.text "address", default: "", null: false
-    t.boolean "is_active", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "first_name_kana"
+    t.string "last_name_kana"
+    t.integer "phone_number"
+    t.integer "postcode"
+    t.text "address"
+    t.boolean "is_active"
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
