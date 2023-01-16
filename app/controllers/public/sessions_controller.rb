@@ -26,11 +26,39 @@ class Public::SessionsController < Devise::SessionsController
   # end
 
   def new
+    @customer = Customer.new
   end
 
   def create
+    @customer = Customer.new(customer_params)
+    @customer.customer_id = current_customer.id
+
+  if @customer.save
+    redirect_to customer_path
+  else
+    render :new
+  end
   end
 
   def destroy
+    @customer = Customer.find(params[:id])
+    @customer.destroy
+    redirect_to customer_path
+  end
+
+  def reject_withdraw_customer
+    @customer = Customer.find_by(email: params[:customer][:email].downcase)
+    if @customer
+      if (@customer.valid_password?(params[:customer][:password]) && (@customer.active_for_authentication? == false))
+        flash[:notice] = "退会済みのためログインできません。"
+        redirect_to new_customer_session_path
+      end
+    end
+  end
+
+
+   private
+  def customer_params
+  	  params.require(:customer).permit(:is_active, :email, :password)
   end
 end
