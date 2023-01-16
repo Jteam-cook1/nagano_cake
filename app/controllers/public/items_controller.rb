@@ -5,4 +5,6 @@ class Public::ItemsController < ApplicationController
 
   def show
   end
+
+  def item_params
 end
