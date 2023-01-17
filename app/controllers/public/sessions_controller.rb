@@ -32,7 +32,7 @@ class Public::SessionsController < Devise::SessionsController
   def create
   customer = Customer.find_by(email: params[:session][:email])
     if customer && customer.authenticate(params[:session][:password])
-      session[:user_id] = customer.id
+      session[:customer_id] = customer.id
       redirect_to root_path
     else
       render :new
