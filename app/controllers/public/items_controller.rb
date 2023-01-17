@@ -7,4 +7,5 @@ class Public::ItemsController < ApplicationController
   end
 
   def item_params
+  end
 end
