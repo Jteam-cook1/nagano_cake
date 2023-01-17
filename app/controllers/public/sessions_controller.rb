@@ -30,20 +30,19 @@ class Public::SessionsController < Devise::SessionsController
   end
 
   def create
-    @customer = Customer.new(customer_params)
-    @customer.customer_id = current_customer.id
-
-  if @customer.save
-    redirect_to customer_path
-  else
-    render :new
-  end
+  customer = Customer.find_by(email: params[:session][:email])
+    if customer && customer.authenticate(params[:session][:password])
+      session[:customer_id] = customer.id
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   def destroy
     @customer = Customer.find(params[:id])
     @customer.destroy
-    redirect_to customer_path
+    redirect_to root_path
   end
 
   def reject_withdraw_customer

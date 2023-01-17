@@ -21,9 +21,10 @@ Rails.application.routes.draw do
   end
   scope module: :public do
     resources :shopping_addresses, only: [:index, :create, :destroy, :edit, :update]
+    # get "/customers/mypage" => "customers#show"
     get "/customers/unsubscribe" => "customers#unsubscribe"
     patch "/customers/withdraw" => "customers#withdraw"
-    resource :customers, only: [:show, :update, :edit]
+    resources :customers, only: [:show, :update, :edit]
     post "/orders/confirm" => "orders#confirm"
     get "/orders/complete" => "orders#complete"
     resources :orders, only: [:new, :create, :show, :index]
