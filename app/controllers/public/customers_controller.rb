@@ -26,8 +26,12 @@ class Public::CustomersController < ApplicationController
   # end
 
   def show
-  	@customer = Customer.find(params[:id])
+  	@customer = Customer.find_by(params[:id])
   end
+
+  # def unsubscribe
+  #   @customer = Customer.find(customer_params)
+  # end
 
   def edit
     @customer = Customer.find(params[:id])
