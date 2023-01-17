@@ -13,7 +13,7 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
       t.integer :phone_number, null: false, default: ""
       t.integer :postcode, null: false, default: ""
       t.text :address, null: false, default: ""
-      t.boolean :is_active, null: false, default: ""
+      t.boolean :is_active, null: false, default: true
 
 
       ## Recoverable
