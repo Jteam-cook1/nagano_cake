@@ -12,7 +12,13 @@
 <h4>商品説明</h4>
 <p><%= @item.description %></p>
 
+<h4>ジャンル</h4>
+<p><%= @item.genre.name %></p>
+
 <h4>税込価格</h4>
 <p><%= @item.price %></p>
+
+<h4>販売ステータス</h4>
+<p><%= @item.is_active ? '販売中' : '販売停止中' %></p>
 
 <%= link_to "編集する", edit_admin_item_path(@item.id) %>
