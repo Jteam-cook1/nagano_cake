@@ -1,5 +1,5 @@
 class Admin::ItemsController < ApplicationController
-  
+
   def index
     @item = Item.all
   
@@ -14,12 +14,12 @@ class Admin::ItemsController < ApplicationController
     @item = Item.new(item_params)
     # 3. データをデータベースに保存するためのsaveメソッド実行
     @item.save
-   
+
     redirect_to admin_item_path(@item.id)
   end
 
   def show
-    @item = Item.find(params[:id]) 
+    @item = Item.find(params[:id])
   end
 
   def edit
@@ -31,7 +31,7 @@ class Admin::ItemsController < ApplicationController
     @item.update(item_params)
     redirect_to admin_item_path(@item.id)
   end
-  
+
   def item_params
     params.require(:item).permit(:name,:description,:price,:image)
   end
