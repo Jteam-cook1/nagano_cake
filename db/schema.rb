@@ -54,29 +54,28 @@ ActiveRecord::Schema.define(version: 2023_01_16_115604) do
 
   create_table "cart_items", force: :cascade do |t|
     t.integer "item_id"
-    t.integer "costomer_id"
+    t.integer "customer_id"
     t.integer "amount"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "customers", force: :cascade do |t|
+    t.string "first_name", default: "", null: false
+    t.string "last_name", default: "", null: false
+    t.string "first_name_kana", default: "", null: false
+    t.string "last_name_kana", default: "", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.integer "phone_number", null: false
+    t.integer "postcode", null: false
+    t.text "address", default: "", null: false
+    t.boolean "is_active", default: true, null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "first_name"
-    t.string "last_name"
-    t.string "first_name_kana"
-    t.string "last_name_kana"
-    t.integer "phone_number"
-    t.integer "postcode"
-    t.text "address"
-    t.boolean "is_active"
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end

@@ -1,0 +1,8 @@
+<h4>注文情報入力</h4>
+
+<%= f.radio_button :payment_method, "credit_card" %>
+<%= f.label :payment_method_credit_card, "クレジットカード" %>
+<%= f.radio_button :payment_method, "transfer" %>
+<%= f.label :payment_method_transfer, "銀行振込" %>
+
+<%= f.select :address_id, options
