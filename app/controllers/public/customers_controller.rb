@@ -62,7 +62,10 @@ class Public::CustomersController < ApplicationController
 
 
   private
-
+  def customer_params
+  	  params.require(:customer).permit(:is_active, :last_name, :first_name, :last_name_kana, :first_name_kana,
+  	                                   :phone_number, :email, :password, :postcode, :address)
+  end
 
   def ensure_correct_customer
     @customer = Customer.find(params[:id])
