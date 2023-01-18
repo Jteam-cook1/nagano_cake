@@ -1,9 +1,12 @@
+<div class="container  px-8 px-sm-8">
+ <div class="row">
+   <div class="col-md-5">
 <h3>ジャンル一覧・追加</h3>
 
  <%= form_with model: @genre,url: admin_genres_path do |f| %>
   <h4>ジャンル名</h4>
   <%= f.text_field :name %>
-  <%= f.submit '新規登録' %>
+  <%= f.submit '新規登録',class:"btn btn-success createbook" %>
   <% end %>
 <table>
   <thead>
@@ -18,10 +21,12 @@
     <tr>
     <td>  
       <%= genre.name %>
-    <%= link_to "編集", edit_admin_genre_path(genre.id) %>
+      <%= link_to "編集する", edit_admin_genre_path(genre.id),class:"btn btn-success createbook" %>
     </td>
     </tr>
    <% end %>
   </tbody>
 </table>
-  
+  </div>
+ </div>
+</div>

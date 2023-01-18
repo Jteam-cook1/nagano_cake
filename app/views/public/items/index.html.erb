@@ -1,0 +1,38 @@
+
+<table>
+ <% @genres.each do |genre| %>
+ 
+ <%= link_to genre.name,items_path(genre_id: genre.id) %>
+ <% end %>
+</table>
+
+ 
+
+
+<h4><%= @title %>一覧</h4>
+
+
+<table>
+<thead>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</thead>
+<tbody>
+<% @items.each do |item| %>
+<td>
+<% if item.image.attached? %>
+<%= image_tag item.image, size: "100x100" %>
+<% else %>
+<%= image_tag 'no_image', size: "100x100" %>
+<% end %>
+
+<%= link_to item.name, item_path(item.id)  %>
+
+<%= item.price %>
+</td>
+<% end %>
+</tbody>
+</table>
+<%= paginate  @items %>
