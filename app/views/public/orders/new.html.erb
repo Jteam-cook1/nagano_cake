@@ -21,7 +21,7 @@
             <h4 class="mt-3">お届け先</h4>
               <div class="row ml-3">
                   <div class="col-12 ml-2">
-                    <%= form_with model: @order, url: check , local: true do |f| %>
+                    <%= form_with model: @order, url: check confirm_order_path, local: true do |f| %>
                       <%= f.radio_button :aaddress_number, 1 %>
                       <%= f.label :address_number_1,"ご自身の住所" %>
                       <%= current_customer.customer_address %>

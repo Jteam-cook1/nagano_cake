@@ -51,7 +51,7 @@ class Public::OrdersController < ApplicationController
         render :new
       end
     else
-      redirect_to cofirm_order_path
+      redirect_to confirm_order_path
     end
     @cart_items = current_customer.cart_items.all
     @total = @cart_items.inject(0) { |sum, item| sum + item.sum_price }
