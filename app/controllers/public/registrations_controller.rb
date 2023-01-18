@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class Public::RegistrationsController < Devise::RegistrationsController
-  # before_action :configure_sign_up_params, only: [:create]
-  # before_action :configure_account_update_params, only: [:update]
+  before_action :configure_sign_up_params, only: [:create]
+  before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
   # def new
@@ -60,15 +60,15 @@ class Public::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
 
-  def new
-    @customer = Customer.new
-  end
+  # def new
+  #   @customer = Customer.new
+  # end
 
-  def create
-    @customer = Customer.new(customer_params)
-    render :new and return if params[:back]
-    super
-  end
+  # def create
+  #   @customer = Customer.new(customer_params)
+  #   render :new and return if params[:back]
+  #   super
+  # end
 
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :last_name_kana, :first_name_kana, :postcode, :address, :phone_number])
@@ -92,10 +92,6 @@ class Public::RegistrationsController < Devise::RegistrationsController
     customer_path(current_customer)
   end
 
-   private
-  def customer_params
-  	  params.require(:customer).permit(:is_active, :last_name, :first_name, :last_name_kana, :first_name_kana,
-  	                                   :phone_number, :email, :password, :postcode, :address)
-  end
+
 
 end
