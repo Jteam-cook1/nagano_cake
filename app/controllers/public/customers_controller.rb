@@ -47,11 +47,11 @@ class Public::CustomersController < ApplicationController
     end
   end
 
-    def withdrow #退会画面を表示するアクション
+    def withdraw #退会画面を表示するアクション
        @customer = Customer.find(params[:id])
     end
 
-    def switch #unsubscribeの代わり
+    def switch
        @customer = Customer.find(params[:id])
        if @customer.update(is_enabled: false)
           sign_out current_customer #URLを踏ませずにコントローラーから直接サインアウトの指示を出す（device公式)
