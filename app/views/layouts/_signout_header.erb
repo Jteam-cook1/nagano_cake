@@ -1,22 +1,26 @@
-<ul style="list-style: none;">
-  <li>
-    <%= link_to about_path do %>
+<ul class="nav justify-content-end">
+  <li class="nav-item">
+    <%= link_to about_path, class: "nav-link text-light" do %>
       <button type="button" class="btn btn-light">About</button>
     <% end %>
   </li>
-  <li>
-    <%= link_to items_path do %>
+  <li class="nav-item">
+    <%= link_to items_path, class: "nav-link text-light" do %>
       <button type="button" class="btn btn-light">商品一覧</button>
     <% end %>
   </li>
-  <li>
-    <%= link_to new_customer_registration_path do %>
+  <li class="nav-item">
+    <%= link_to new_customer_registration_path, class: "nav-link text-light" do %>
       <button type="button" class="btn btn-light">新規登録</button>
     <% end %>
   </li>
-  <li>
-    <%= link_to new_customer_session_path do %>
+  <li class="nav-item">
+    <%= link_to new_customer_session_path, class: "nav-link text-light" do %>
       <button type="button" class="btn btn-light">ログイン</button>
     <% end %>
   </li>
 </ul>
+<form class="d-flex">
+  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+  <button class="btn btn-outline-success" type="submit">Search</button>
+</form>
