@@ -22,11 +22,11 @@
  <th><%= link_to item.name, admin_item_path(item.id)  %></th>
 
  <th><%= item.price %></th>
- 
+
  <th><%= item.genre.name %></th>
- 
+
  <th><%= item.is_active ? '販売中' : '販売停止中' %></th>
- 
+
 </tr>
 <% end %>
 
