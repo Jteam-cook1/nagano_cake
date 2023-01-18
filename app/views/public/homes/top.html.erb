@@ -1,2 +1,31 @@
-<h1>TOPページ</h1>
+<table>
+ <% @genres.each do |genre| %>
+ 
+ <%= link_to genre.name,root_path(genre_id: genre.id) %>
+ <% end %>
+</table>
 
+ 
+
+
+<h4><%= @title %></h4>
+
+
+<table>
+<tbody>
+<% @items.each do |item| %>
+<td>
+<% if item.image.attached? %>
+<%= image_tag item.image, size: "100x100" %>
+<% else %>
+<%= image_tag 'no_image', size: "100x100" %>
+<% end %>
+
+<%= link_to item.name, item_path(item.id)  %>
+
+<%= item.price %>
+</td>
+<% end %>
+</tbody>
+</table>
+<%= paginate  @items %>
