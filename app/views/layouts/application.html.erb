@@ -12,12 +12,24 @@
 
   <body>
     <header>
-      <%= link_to("LOGO", root_path) %>
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <h1><%= link_to("LOGO", root_path) %></h1>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div>
+            <% if admin_signed_in? %>
+              <%= render 'layouts/signin_admin_header' %>
+            <% elsif customer_signed_in? %>
+              <%= render 'layouts/signin_customer_header' %>
+            <% else %>
+              <%= render 'layouts/signout_header' %>
+            <% end %>
+          </div>
+        </div>
 
-      <%# if admin_signed_in? %>
-        <%# render 'layouts/singin_header' %>
-      <%# else %>
-        <%= render 'layouts/signout_header' %>
+      </nav>
     </header>
 
     <%= yield %>
