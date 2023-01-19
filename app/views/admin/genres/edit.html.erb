@@ -1,16 +1,23 @@
 <div class="container  px-8 px-sm-8">
  <div class="row">
    <div class="col-md-5">
-<h1>ジャンル編集</h1>
+<div class="p-3 mb-2 bg-light text-dark">ジャンル編集</div>
 
 <%= form_with model: @genre,url: admin_genre_path(@genre.id),local:true do |f| %>
-  <tr>
-  <h4>ジャンル名</h4>
+
+<table class="table ">
+<thead class="thead-light">
+  
+  ジャンル名
+
+  
   <%= f.text_field :name %>
   
   <%= f.submit '変更を保存',class:"btn btn-success createbook"  %>
-  </tr>
+ 
 <% end %>
+
+</table>
  </div>
  </div>
 </div>
