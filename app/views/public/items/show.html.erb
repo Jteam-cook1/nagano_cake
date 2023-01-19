@@ -1,14 +1,16 @@
 <div class="container  px-8 px-sm-8">
  <div class="row">
-   <div class="col-md-5">
+  <div class="col-4 mt-5 pt-5">
        <table style="border-color:#000000 ; border-style:solid ; border-width:1px ;">
-       <tr><th>
+      
        <% @genres.each do |genre| %>
- 
+    　　<tr><th>
        <%= link_to genre.name,root_path(genre_id: genre.id) %>
        <% end %>
        </th></tr>
        </table>
+　</div>
+　<div class="col-4 mt-5 pt-5">
 <h4>商品詳細</h4>
 <% if @item.image.attached? %>
   <%= image_tag @item.image, size: "300x300" %>
@@ -39,5 +41,5 @@
 <%#= link_to "編集する", edit_admin_item_path(@item.id) %>
 
 </div>
- </div>
+</div>
 </div>
