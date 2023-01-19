@@ -6,7 +6,7 @@ class Public::OrdersController < ApplicationController
 
   def confirm
     @order = Order.new(order_params)
-    @address = Address.find(params[:order][:address_id])
+    @address = ShoppingAddress.find(params[:order][:address_id])
     @order.postcode = current_customer.postcode
     @order.address = current_customer.address
     @order.name = current_customer.first_name + current_customer.last_name
@@ -24,7 +24,7 @@ class Public::OrdersController < ApplicationController
         order_item.order_price = cart.item.price
         order_item.save
       end
-      redirect_to confirm_order_path
+      redirect_to orders_confirm_path
       cart_items.destroy_all
     else
       @order = Order.new(order_params)
@@ -51,7 +51,7 @@ class Public::OrdersController < ApplicationController
         render :new
       end
     else
-      redirect_to cofirm_order_path
+      redirect_to orders_confirm_path
     end
     @cart_items = current_customer.cart_items.all
     @total = @cart_items.inject(0) { |sum, item| sum + item.sum_price }
