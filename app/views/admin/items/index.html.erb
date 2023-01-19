@@ -1,9 +1,14 @@
-<div>
-<h4>商品一覧</h4>
+<div class="container  px-8 px-sm-8">
+
+
+
+<p><span class="bg-lightsecondary">
+商品一覧
+</span>
 <%= link_to "新規登録", new_admin_item_path %>
-</div>
-<table>
-<thead>
+
+<table class="table ">
+<thead class="thead-light">
 <tr>
 <th>商品ID</th>
 <th>商品名</th>
@@ -34,3 +39,7 @@
 
 </table>
 <%= paginate  @items %>
+
+</div>
+ </div>
+</div>
