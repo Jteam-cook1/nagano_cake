@@ -29,9 +29,9 @@ class Public::CustomersController < ApplicationController
   	@customer = Customer.find(params[:id])
   end
 
-  # def unsubscribe
-  #   @customer = Customer.find(customer_params)
-  # end
+  def unsubscribe
+    # @customer = Customer.find(customer_params)
+  end
 
   def edit
     @customer = Customer.find(params[:id])
@@ -40,26 +40,30 @@ class Public::CustomersController < ApplicationController
   def update
     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
-      # flash[:success] = "You have edited user data successfully."
+      flash[:success] = "You have edited user data successfully."
       redirect_to customer_path(@customer)
     else
       render 'edit'
     end
   end
 
-    def withdrow #退会画面を表示するアクション
-       @customer = Customer.find(params[:id])
-    end
+  # def withdraw
+  #   @customer = current_customer
+  #   @customer.withdrawal_status = true
+  #   if @customer.save
+  #     reset_session
+  #     redirect_to root_path
+  #   end
+  # end
 
-    def switch #unsubscribeの代わり
-       @customer = Customer.find(params[:id])
-       if @customer.update(is_enabled: false)
-          sign_out current_customer #URLを踏ませずにコントローラーから直接サインアウトの指示を出す（device公式)
-       end
-       redirect_to root_path
-    end
-
-
+  def withdraw
+    @customer = Customer.find(params[:id])
+    # is_deletedカラムをtrueに変更することにより削除フラグを立てる
+    @customer.update(is_active: true)
+    reset_session
+    flash[:notice] = "退会処理を実行いたしました"
+    redirect_to root_path
+  end
 
   private
   def customer_params
