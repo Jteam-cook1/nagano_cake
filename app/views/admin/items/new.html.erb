@@ -1,11 +1,19 @@
-<div class="container  px-8 px-sm-8">
+<div class="container ">
  <div class="row">
-   <div class="col-md-5">
-   <h1>商品新規登録</h1>
-
-<%= form_with model: @item,url: admin_items_path(@item.id) do |f| %>
+   <div class="col-md-4 col-md-offset-4">
+   <p><span class="bg-lights">
+   商品新規登録
+   </span>
+  
+   
+   <%= form_with model: @item,url: admin_items_path(@item.id) do |f| %>
+  
+  
+   <tr>
    <h4>画像</h4>
-   <%= f.file_field :image, accept: "image/*" %>
+   <td><%= f.file_field :image, accept: "image/*" %></td>
+   </tr>
+   
    <h4>商品名</h4>
    <%= f.text_field :name,class:"form-control name" %>
    <h4>商品説明</h4>
@@ -22,7 +30,9 @@
    
    <div>
    <%= f.submit "新規登録",class:"btn btn-success createbook" %>
+   
    </div>
+   
    <% end %>
    </div>
  </div>
