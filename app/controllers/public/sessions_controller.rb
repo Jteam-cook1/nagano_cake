@@ -45,17 +45,19 @@ class Public::SessionsController < Devise::SessionsController
   #   redirect_to root_path
   # end
 
-  # def reject_withdraw_customer
-  #   @customer = Customer.find_by(email: params[:customer][:email].downcase)
-  #   if @customer
-  #     if (@customer.valid_password?(params[:customer][:password]) && (@customer.active_for_authentication? == false))
-  #       flash[:notice] = "退会済みのためログインできません。"
-  #       redirect_to new_customer_session_path
-  #     end
-  #   end
-  # end
-
   protected
+
+  def reject_withdraw_customer
+    @customer = Customer.find_by(email: params[:customer][:email].downcase)
+    if @customer
+      if (@customer.valid_password?(params[:customer][:password]) && (@customer.active_for_authentication? == false))
+        flash[:notice] = "退会済みのためログインできません。"
+        redirect_to new_customer_session_path
+      end
+    end
+  end
+
+
   def after_sign_in_path_for(resource)
     customer_path(current_customer)
   end
@@ -63,8 +65,12 @@ class Public::SessionsController < Devise::SessionsController
     new_customer_session_path
   end
 
+
    private
   def customer_params
   	  params.require(:customer).permit(:is_active, :email, :password)
   end
 end
+
+
+
