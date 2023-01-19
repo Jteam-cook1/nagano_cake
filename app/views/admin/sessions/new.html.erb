@@ -4,29 +4,48 @@
     <div class="col-3"></div>
 
     <div class="col-6">
-
+      <table>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <div class="form-group">
-          <%= f.label :email,"メールアドレス" %>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-        </div><br><br>
+        <tbody>
+          <tr class="form-group">
+            <td>
+              <div style="margin: 10px 30px 10px auto;">
+                <%= f.label :email,"メールアドレス" %>
+                </div>
+            </td>
+            <td>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            </td>
+          </tr>
 
-        <div class="form-group">
-          <%= f.label :password, "パスワード" %>
-          <%= f.password_field :password, autocomplete: "current-password" %>
-        </div><br><br>
+          <tr class="form-group">
+            <td>
+              <div style="margin: 10px 30px 10px auto;">
+                <%= f.label :password, "パスワード" %>
+              </div>
+            </td>
+            <td>
+              <%= f.password_field :password, autocomplete: "current-password" %>
+            </td>
+          </tr>
 
-        <%# if devise_mapping.rememberable? %>
-          <!--<div class="field">
-            <%# f.check_box :remember_me %>
-            <%# f.label :remember_me %>
-          </div>-->
-        <%# end %>
 
-        <div class="actions">
-          <%= f.submit "ログイン", class:"btn btn-primary btn-lg center-block" %>
-        </div><br><br><br>
-        <% end %>
+          <%# if devise_mapping.rememberable? %>
+            <!--<div class="field">
+              <%# f.check_box :remember_me %>
+              <%# f.label :remember_me %>
+            </div>-->
+          <%# end %>
+
+          <tr class="actions">
+            <td></td>
+            <td>
+              <%= f.submit "ログイン", class:"btn btn-primary btn-lg center-block" %>
+            </td>
+          </tr>
+        </tbody>
+      <% end %>
+      </table>
     </div>
     <%= render "admin/shared/links" %>
   </div>
