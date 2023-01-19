@@ -22,8 +22,8 @@ Rails.application.routes.draw do
   scope module: :public do
     resources :shopping_addresses, only: [:index, :create, :destroy, :edit, :update]
     # get "/customers/mypage" => "customers#show"
-    get "/customers/unsubscribe" => "customers#unsubscribe"
-    patch "/customers/withdraw" => "customers#withdraw"
+    get "/customers/:id/unsubscribe" => "customers#unsubscribe", as: "unsubscribe"
+    patch "/customers/:id/withdraw" => "customers#withdraw", as: "withdraw"
     resources :customers, only: [:show, :update, :edit]
     post "/orders/confirm" => "orders#confirm"
     get "/orders/complete" => "orders#complete"
