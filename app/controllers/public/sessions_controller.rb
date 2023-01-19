@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
-  # before_action :configure_sign_in_params, only: [:create]
+  before_action :reject_withdraw_customer, only: [:create]
 
   # GET /resource/sign_in
   # def new
@@ -47,10 +47,20 @@ class Public::SessionsController < Devise::SessionsController
 
   protected
 
+  # def reject_withdraw_customer
+  #   @customer = Customer.find_by(email: params[:customer][:email].downcase)
+  #   if @customer
+  #     if (@customer.valid_password?(params[:customer][:password]) && (@customer.active_for_authentication? == true))
+  #       flash[:notice] = "退会済みのためログインできません。"
+  #       redirect_to new_customer_session_path
+  #     end
+  #   end
+  # end
+
   def reject_withdraw_customer
-    @customer = Customer.find_by(email: params[:customer][:email].downcase)
+    @customer = Customer.find_by(email: params[:customer][:email].downcase)#登録したメールアドレスか確認する
     if @customer
-      if (@customer.valid_password?(params[:customer][:password]) && (@customer.active_for_authentication? == false))
+      if (@customer.valid_password?(params[:customer][:password]) && @customer.is_active == false)#有効なパスワードか確認する→＆＆　退会しているか確認する
         flash[:notice] = "退会済みのためログインできません。"
         redirect_to new_customer_session_path
       end
