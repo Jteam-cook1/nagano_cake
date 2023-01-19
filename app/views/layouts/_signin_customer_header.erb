@@ -1,26 +1,36 @@
 <ul class="nav justify-content-end">
   <li class="nav-item">
+    <span style="margin: 115px">
     <%= link_to customer_path(current_customer), class: "nav-link text-light" do %>
       <button type="button" class="btn btn-light">マイページ</button>
     <% end %>
+    </span>
   </li>
   <li class="nav-item">
+    <span style="margin: 100px">
     <%= link_to items_path, class: "nav-link text-light" do %>
       <button type="button" class="btn btn-light">商品一覧</button>
     <% end %>
+    </span>
   </li>
   <li class="nav-item">
+    <span style="margin: 85px">
     <%= link_to cart_items_path, class: "nav-link text-light" do %>
       <button type="button" class="btn btn-light">カート</button>
     <% end %>
+    </span>
   </li>
   <li class="nav-item">
+    <span style="margin: 100px">
     <%= link_to destroy_customer_session_path, method: :delete, class: "nav-link text-light" do %>
       <button type="button" class="btn btn-light">ログアウト</button>
     <% end %>
+    </span>
   </li>
 </ul>
-<form class="d-flex">
-  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-  <button class="btn btn-outline-success" type="submit">Search</button>
-</form>
+<div style="size: 80%; margin: 0 0 0 auto;" >
+  <form class="d-flex">
+    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+  </form>
+</div>
