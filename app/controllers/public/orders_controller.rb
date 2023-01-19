@@ -6,6 +6,7 @@ class Public::OrdersController < ApplicationController
 
   def confirm
     @order = Order.new(order_params)
+     params[:order][:address_id]
     @address = Address.find(params[:order][:address_id])
     @order.postcode = current_customer.postcode
     @order.address = current_customer.address

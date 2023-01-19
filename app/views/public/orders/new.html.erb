@@ -25,7 +25,7 @@
                     <%= f.label :address_number,"ご自身の住所" %></br>
                     〒<%= current_customer.postcode %>
                     <%= current_customer.address %></br>
-                    <%= @order.name %>
+                    <%= current_customer.first_name + current_customer.last_name %>
                   </div>
                   <div class="col-12 ml-2">
                     <%= f.radio_button :address_number, 2 %>
