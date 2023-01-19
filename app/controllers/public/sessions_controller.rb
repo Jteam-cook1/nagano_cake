@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
-  before_action :configure_sign_in_params, only: [:create]
+  # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
   # def new
@@ -45,6 +45,8 @@ class Public::SessionsController < Devise::SessionsController
   #   redirect_to root_path
   # end
 
+  protected
+
   def reject_withdraw_customer
     @customer = Customer.find_by(email: params[:customer][:email].downcase)
     if @customer
@@ -55,7 +57,7 @@ class Public::SessionsController < Devise::SessionsController
     end
   end
 
-  protected
+
   def after_sign_in_path_for(resource)
     customer_path(current_customer)
   end
