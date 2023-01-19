@@ -7,7 +7,7 @@ class Public::ItemsController < ApplicationController
     @items = Item.where(genre_id: params[:genre_id]).page(params[:page])
     @title = Genre.find(params[:genre_id]).name
     else
-    @items = Item.page(params[:page])
+    @items = Item.page(params[:page]).per(8)
     @title = "商品"
     end  
     #@item = Item.find(params[:id])

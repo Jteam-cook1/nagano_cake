@@ -1,25 +1,21 @@
 <div class="container  px-8 px-sm-8">
-<table style="border-color:#000000 ; border-style:solid ; border-width:1px ;">
-<tr><th>
+  <div class="row">
+  <div class="col-4 mt-5 pt-5">
+　<table style="border-color:#000000 ; border-style:solid ; border-width:1px ;">
+
  <% @genres.each do |genre| %>
- 
+ <tr><th>
  <%= link_to genre.name,items_path(genre_id: genre.id) %>
  <% end %>
- </th></tr>
+</th></tr>
 </table>
-
+</div>
+<div class="col-6 mt-5 pt-5">
 <h4><%= @title %>一覧</h4>
 
-<table>
-<thead>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</thead>
-<tbody>
+<div class="d-flex flex-wrap">
 <% @items.each do |item| %>
-<th>
+<div>
 <div class="p-2">
 <% if item.image.attached? %>
 <%= image_tag item.image, size: "100x100" %>
@@ -27,16 +23,15 @@
 <%= image_tag 'no_image', size: "100x100" %>
 <% end %>
 </div>
- <div class="p-2">
+<div class="p-2">
 <%= link_to item.name, item_path(item.id)  %>
 </div>
  <div class="p-2">
 <%= item.price %>
 </div>
-</th>
+</div>
 <% end %>
-</tbody>
-</table>
+</div>
 <ul class="pagination">
 <%= paginate  @items %>
 </ul>
