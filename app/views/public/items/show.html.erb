@@ -1,45 +1,42 @@
 <div class="container  px-8 px-sm-8">
  <div class="row">
-  <div class="col-4 mt-5 pt-5">
-       <table style="border-color:#000000 ; border-style:solid ; border-width:1px ;">
-      
+  <div class="col-2 mt-5 pt-5" style="border: solid;">
+   <p>ジャンル検索</p>   
        <% @genres.each do |genre| %>
-    　　<tr><th>
-       <%= link_to genre.name,items_path(genre_id: genre.id) %>
+   <p><%= link_to genre.name,items_path(genre_id: genre.id) %></p>
        <% end %>
-       </th></tr>
-       </table>
 　</div>
-　<div class="col-4 mt-5 pt-5">
-<h4>商品詳細</h4>
-<% if @item.image.attached? %>
+　<div class="col-6 mt-5 pt-5 offset-md-2">
+  <h4>商品詳細</h4>
+  <% if @item.image.attached? %>
   <%= image_tag @item.image, size: "300x300" %>
-<% else %>
+  <% else %>
   <%= image_tag 'no_image', size: "300x300" %>
-<% end %>
+  <% end %>
 
-<p><%= @item.name %></p>
-
-
-<p><%= @item.description %></p>
+  <p><%= @item.name %></p>
 
 
-<p><%= @item.price %></p>
-
-<p>
-<select name="example">
-<option value="1">1</option>
-<option value="2">2</option>
-<option value="3">3</option>
-</select>
-</p>
+  <p><%= @item.description %></p>
 
 
-<div>
-<%= link_to "カートに入れる", cart_items_path,class:"btn btn-success createbook" %>
-</div>
+  <p><%= @item.price %></p>
+
+  <p>
+  <select name="example">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  </select>
+  </p>
+
+
+  <div>
+   <%= link_to "カートに入れる", cart_items_path,class:"btn btn-success createbook" %>
+  </div>
 <%#= link_to "編集する", edit_admin_item_path(@item.id) %>
 
-</div>
-</div>
+   </div>
+ </div>
 </div>
