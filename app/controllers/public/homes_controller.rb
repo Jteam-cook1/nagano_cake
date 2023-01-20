@@ -1,6 +1,5 @@
 class Public::HomesController < ApplicationController
   def top
-    
     @genres = Genre.all
     if params[:genre_id]
     @items = Item.where(genre_id: params[:genre_id]).page(params[:page])
