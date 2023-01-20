@@ -5,7 +5,7 @@
       
        <% @genres.each do |genre| %>
     　　<tr><th>
-       <%= link_to genre.name,root_path(genre_id: genre.id) %>
+       <%= link_to genre.name,items_path(genre_id: genre.id) %>
        <% end %>
        </th></tr>
        </table>
