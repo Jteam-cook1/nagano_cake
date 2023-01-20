@@ -33,7 +33,7 @@
       <table class="table table-borderless mt-3">
         <tr>
           <th>税込価格</th>
-          <td><%= @item.price %></td>
+          <td><%= @item.add_tax_price.to_s(:delimited) %></td>
         </tr>
       </table>
 
