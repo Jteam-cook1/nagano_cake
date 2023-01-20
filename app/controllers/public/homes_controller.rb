@@ -6,7 +6,7 @@ class Public::HomesController < ApplicationController
     @items = Item.where(genre_id: params[:genre_id]).page(params[:page])
     @title = Genre.find(params[:genre_id]).name
     else
-    @items = Item.page(params[:page])
+    @items = Item.order('id DESC').limit(4)
     @title = "新着商品"
     end
   end
