@@ -6,7 +6,7 @@ class Public::OrdersController < ApplicationController
 
   def create
     cart_items = current_customer.cart_items.all
-    @order = current_customer.order.new(order_params)
+    @order = current_customer.orders.new(order_params)
     if @order.save
       cart_items.each do |cart|
         order_item = OrderItem.new
@@ -40,16 +40,13 @@ class Public::OrdersController < ApplicationController
 
     elsif params[:order][:address_number] == "2"
 
-      @shopping_address = ShoppingAddress.find(params[:order][:address_id].to_s)
+      @shopping_address = ShoppingAddress.find(params[:order][:registered])
       @order.postcode = @shopping_address.postcode
       @order.address = @shopping_address.address
       @order.name = @shopping_address.name
 
     elsif params[:order][:address_number] == "3"
-      @order.postcode = params[:order][:postcode]
-      @order.address = params[:order][:address]
-      @order.name = params[:orde][:name]
-
+      
     end
     @cart_items_total_price = 0
   end
