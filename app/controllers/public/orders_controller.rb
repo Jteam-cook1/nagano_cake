@@ -4,18 +4,9 @@ class Public::OrdersController < ApplicationController
     @order = Order.new
   end
 
-  def confirm
-    @order = Order.new(order_params)
-     params[:order][:address_id]
-    @address = Address.find(params[:order][:address_id])
-    @order.postcode = current_customer.postcode
-    @order.address = current_customer.address
-    @order.name = current_customer.first_name + current_customer.last_name
-  end
-
   def create
     cart_items = current_customer.cart_items.all
-    @order = current_customer.order.new(order_params)
+    @order = current_customer.orders.new(order_params)
     if @order.save
       cart_items.each do |cart|
         order_item = OrderItem.new
@@ -25,7 +16,7 @@ class Public::OrdersController < ApplicationController
         order_item.order_price = cart.item.price
         order_item.save
       end
-      redirect_to orders_confirm_path
+      redirect_to orders_complete_path
       cart_items.destroy_all
     else
       @order = Order.new(order_params)
@@ -33,31 +24,32 @@ class Public::OrdersController < ApplicationController
     end
   end
 
-  def check
+  def confirm
     @order = Order.new(order_params)
+    @sub_total = 0
+    @cart_item_total_price = 0
+    @order.shipping_fee = 800
+    @order.payment_method = params[:order][:payment_method]
+
+
     if params[:order][:address_number] == "1"
-      @order.name = current_customer.name
-      @order.address = current_customer.customer_address
+
+      @order.postcode = current_customer.postcode
+      @order.address = current_customer.address
+      @order.name = current_customer.first_name + current_customer.last_name
+
     elsif params[:order][:address_number] == "2"
 
-      if Address.exists?(name: params[:order][:registered]).name
-        @order.name = Address.find(params[:order][:registered]).address
-      else
-        render :new
-      end
-    elsif params[:order][:address_number] == "3"
-      address_new = current_customer.addresses.new(address_params)
-      if address_new.save
-      else
-        render :new
-      end
-    else
-      redirect_to orders_confirm_path
-    end
-    @cart_items = current_customer.cart_items.all
-    @total = @cart_items.inject(0) { |sum, item| sum + item.sum_price }
-  end
+      @shopping_address = ShoppingAddress.find(params[:order][:registered])
+      @order.postcode = @shopping_address.postcode
+      @order.address = @shopping_address.address
+      @order.name = @shopping_address.name
 
+    elsif params[:order][:address_number] == "3"
+      
+    end
+    @cart_items_total_price = 0
+  end
 
   def complete
   end
