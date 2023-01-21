@@ -1,7 +1,8 @@
 <div class="container">
   <div class="row">
-    <h4>商品詳細</h4>
+    
     <div class="col-4 mt-5 pt-5">
+      <h4>商品詳細</h4>
       <% if @item.image.attached? %>
         <%= image_tag @item.image, size: "300x300" %>
       <% else %>
@@ -33,7 +34,7 @@
       <table class="table table-borderless mt-3">
         <tr>
           <th>税込価格</th>
-          <td><%= @item.price %></td>
+          <td><%= @item.add_tax_price.to_s(:delimited) %></td>
         </tr>
       </table>
 

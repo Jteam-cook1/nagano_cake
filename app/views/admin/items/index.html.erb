@@ -30,7 +30,12 @@
 
  <th><%= item.genre.name %></th>
 
- <th><%= item.is_active ? '販売中' : '販売停止中' %></th>
+ <th><% if item.is_active %>
+ <p style="color: lime;">販売中</p>
+ <% else %>
+ <p style="color: #dcdcdc">販売停止中</p>
+ <% end %>
+ </th>
 
 </tr>
 <% end %>
