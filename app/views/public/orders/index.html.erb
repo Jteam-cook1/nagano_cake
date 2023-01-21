@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset--md-2">
+      <h2>注文履歴一覧</h2>
+    </div>
+  </div>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>注文日</th>
+        <th>配送先</th>
+        <th>注文商品</th>
+        <th>支払金額</th>
+        <th>ステータス</th>
+        <th>注文詳細</th>
+      </tr>
+    </thead>
+    <% @orders.each do |order| %>
+    <tbody>
+      <tr>
+        <td><%= order.crated_at.strftime('%Y/%m/%d') %></td>
+        <td>〒<%= order.postcode %><%= order.address %><br>
+        <%= order.name %>
+        </td>
+        <td><% order.order_details.each do |order_detail| %>
+              <li><%= order_detail.item.name %></li>
+            <% end %>
+        </td>
+        <td><% @total_price = 0 %>
+            <% order.order_details.each do |orderr_detail| %>
+              <% @total_price += order_detail.item.price %>
+            <% end %>
+            <%= @total_price %>
+        </td>
+        <td></td>
+      </tr>
+    </tbody>
+    <% end %>
+  </table>
+</div>
