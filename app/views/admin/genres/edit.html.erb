@@ -7,14 +7,17 @@
 
 <table class="table ">
 <thead class="thead-light">
-  
+  <tr>
+  <td> 
   ジャンル名
-
-  
+  </td>
+  <td>
   <%= f.text_field :name %>
-  
-  <%= f.submit '変更を保存',class:"btn btn-success createbook"  %>
- 
+  </td>
+  <td>
+  <%= f.submit '変更を保存',class:"btn btn-outline-danger"  %>
+  </td>
+  </tr>
 <% end %>
 
 </table>
