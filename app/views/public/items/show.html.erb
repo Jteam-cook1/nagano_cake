@@ -1,7 +1,7 @@
 <div class="container  px-8 px-sm-8">
  <div class="row">
-  <div class="col-2 mt-5 pt-5" style="border: solid;">
-   <p>ジャンル検索</p>   
+  <div class="col-2 mt-5 pt-5" style="border: double;">
+   <p>ジャンル検索</p>
        <% @genres.each do |genre| %>
    <p><%= link_to genre.name,items_path(genre_id: genre.id) %></p>
        <% end %>
@@ -33,7 +33,9 @@
 
 
   <div>
-   <%= link_to "カートに入れる", cart_items_path,class:"btn btn-success createbook" %>
+   <% if customer_signed_in? %>
+   <%= link_to "カートに入れる", cart_items_path,class:"btn btn-outline-danger" %>
+    <% end %>
   </div>
 <%#= link_to "編集する", edit_admin_item_path(@item.id) %>
 
