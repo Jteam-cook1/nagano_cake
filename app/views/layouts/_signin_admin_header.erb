@@ -36,8 +36,8 @@
   </li>
 </ul>
 <div style="size: 80%; margin: 0 0 0 auto;" >
-  <form class="d-flex">
-    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-success" type="submit">Search</button>
-  </form>
+  <%= form_with url: admin_search_path, method: :get, class:"d-flex", local: true do |f| %>
+    <%= f.text_field :keyword, class:"form-control me-2",  placeholder:"Search" %>
+    <%= f.submit "Search", class:"btn btn-outline-success" %>
+  <% end %>
 </div>

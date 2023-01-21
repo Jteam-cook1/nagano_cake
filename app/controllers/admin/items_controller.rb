@@ -1,5 +1,5 @@
 class Admin::ItemsController < ApplicationController
-
+  before_action :authenticate_admin!
   def index
     @item = Item.all
     @items = Item.page(params[:page])
@@ -34,5 +34,11 @@ class Admin::ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(:name,:description,:price,:image,:genre_id,:is_active,:page)
+  end
+
+  def search
+    @items = Item.search(params[:keyword]).page(params[:page])
+    @keyword = params[:keyword]
+    render "index"
   end
 end

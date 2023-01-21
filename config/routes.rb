@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :edit, :create, :update]
     resources :items, only: [:index, :create, :new, :show, :edit, :update]
     resources :order_details, only: [:update]
-    # get "/search" => "items#search"
+    get "/search" => "items#search"
   end
   scope module: :public do
     resources :shopping_addresses, only: [:index, :create, :destroy, :edit, :update]
@@ -33,7 +33,7 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :show]
     root "homes#top"
     get "/about" => "homes#about"
-    # get "/search" => "items#search"
+    get 'search' => "items#search"
   end
 
 
