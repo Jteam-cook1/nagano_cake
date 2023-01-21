@@ -1,7 +1,7 @@
 <div class="container  px-8 px-sm-8">
  <div class="row">
   <div class="col-2 mt-5 pt-5" style="border: solid;">
-   <p>ジャンル検索</p>   
+   <p>ジャンル検索</p>
        <% @genres.each do |genre| %>
    <p><%= link_to genre.name,items_path(genre_id: genre.id) %></p>
        <% end %>
