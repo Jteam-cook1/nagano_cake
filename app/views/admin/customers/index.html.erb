@@ -1,7 +1,4 @@
 <div class="container  px-8 px-sm-8">
-
-
-
 <p><span class="bg-lightsecondary">
 会員一覧
 </span>
@@ -22,7 +19,7 @@
 <tr>
  <th><%= customer.id %></th>
 
- <th><%= link_to customer.last_name, admin_customer_path(customer.id)  %></th>
+ <th><%= link_to customer.full_name, admin_customer_path(customer.id)  %></th>
 
  <th><%= customer.email %></th>
 
