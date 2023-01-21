@@ -30,32 +30,29 @@ class Public::OrdersController < ApplicationController
     @cart_item_total_price = 0
     @order.shipping_fee = 800
     @order.payment_method = params[:order][:payment_method]
-    
-    
+
+
     if params[:order][:address_number] == "1"
+
       @order.postcode = current_customer.postcode
       @order.address = current_customer.address
       @order.name = current_customer.first_name + current_customer.last_name
+
     elsif params[:order][:address_number] == "2"
 
-      if Address.exists?(name: params[:order][:registered]).name
-        @order.name = Address.find(params[:order][:registered]).address
-      else
-        redirect_to orders_complete_path
-      end
-    elsif params[:order][:address_number] == "3"
-      address_new = current_customer.shopping_addresses.new(address_params)
-      if address_new.save
-      else
-        redirect_to orders_complete_path
-      end
-    else
-      redirect_to orders_confirm_path
-    end
-    @cart_items = current_customer.cart_items.all
-    @total = @cart_items.inject(0) { |sum, item| sum + item.sum_price }
-  end
+      @shopping_address = ShoppingAddress.find(params[:order][:address_id].to_s)
+      @order.postcode = @shopping_address.postcode
+      @order.address = @shopping_address.address
+      @order.name = @shopping_address.name
 
+    elsif params[:order][:address_number] == "3"
+      @order.postcode = params[:order][:postcode]
+      @order.address = params[:order][:address]
+      @order.name = params[:orde][:name]
+
+    end
+    @cart_items_total_price = 0
+  end
 
   def complete
   end
