@@ -2,6 +2,7 @@
   <div class="row mt-3">
     <div class="col-sm-4 px-sm-0 offset-sm-1">
       <div><%= flash[:notice] %></div>
+      <%= render "public/shared/error_messages", resource: resource %>
       <h2>ログイン</h2>
     </div>
   </div>
