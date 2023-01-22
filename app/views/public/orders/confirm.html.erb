@@ -3,7 +3,9 @@
     <div class="col-md-3">
       <h2>注文情報確認</h2>
     </div>
-    <div class="col-md-12">
+  </div>
+  <div class="row">
+    <div class="col-md-8">
       <table class="table table-bordered">
         <thead>
           <tr>
@@ -28,10 +30,6 @@
         </tbody>
       </table>
     </div>
-  </div>
-</div>
-<div class="container">
-  <div class="row">
     <div class="col-md-4">
       <table class="table table-bordered">
         <tbody>
@@ -50,16 +48,26 @@
         </tbody>
       </table>
     </div>
-    <div class="col-4">
-      <div class="col-md-12">
-        <h2>支払方法</h2>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+
+      <div class="col-2">
+        <h4>支払方法</h4>
+      </div>
+      <div class="col-2">
         <%= @order.payment_method_i18n %>
       </div>
-      <div class="col-md-12">
-        <h2>お届け先</h2>
+      <div class="col-8"></div>
+      <div class="col-2">
+        <h4>お届け先</h4>
+      </div>
+      <div class="col-4">
         〒<%= @order.postcode %><%= @order.address %><br>
         <%= @order.name %>
       </div>
+      <div class="col-6"></div>
     </div>
   </div>
       <%= form_with model: @order, url: orders_path, local: true do |f| %>
