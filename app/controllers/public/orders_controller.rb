@@ -46,7 +46,7 @@ class Public::OrdersController < ApplicationController
       @order.name = @shopping_address.name
 
     elsif params[:order][:address_number] == "3"
-      
+
     end
     @cart_items_total_price = 0
   end
@@ -61,6 +61,9 @@ class Public::OrdersController < ApplicationController
   def show
     @order = current_customer.orders.find(params[:id])
     @order_details = @order.order_details
+    @sub_total = 0
+    @cart_item_total_price = 0
+    @order.shipping_fee = 800
   end
 
   private
