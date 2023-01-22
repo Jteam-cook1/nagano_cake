@@ -7,10 +7,6 @@
         <table class="table table-hover table-inverse">
          <thead class="thead-light">
          
-    <% @cart_items.each do |cart_item| %>
-      <%= form_with model:cart_item, local:true do |f| %>
-        <%= f.hidden_field :item_id, value:cart_item.item.id %>
-        <%= f.hidden_field :customer_id, value:current_customer.id %>
         <table class="table table-bordered">
           <thead>
             <tr>
