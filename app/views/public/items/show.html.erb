@@ -23,21 +23,19 @@
   <p><%= @item.price %></p>
 
   <p>
-  <select name="example">
-  <option value="1">1</option>
-  <option value="2">2</option>
-  <option value="3">3</option>
-  <option value="4">4</option>
-  </select>
+  <% if customer_signed_in? %>
+  <%= form_with model: @cart_item,url: cart_items_path do |f| %>
+  
+  <%= f.hidden_field :item_id, value: @item.id%>
+  <%#= f.label :score %>
+  <%#= f.number_field :score, step: "0.1" %>
+  <%= f.select :amount, *[1..9], include_blank: "選択して下さい" %>
+  
+   <%= f.submit "カートに入れる",class:"btn btn-outline-danger" %>
+   <% end %>
+   <% end %>
   </p>
 
-
-  <div>
-   <% if customer_signed_in? %>
-   <%= link_to "カートに入れる", cart_items_path,class:"btn btn-outline-danger" %>
-    <% end %>
-  </div>
-<%#= link_to "編集する", edit_admin_item_path(@item.id) %>
 
    </div>
  </div>
