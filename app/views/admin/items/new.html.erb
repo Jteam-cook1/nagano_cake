@@ -22,7 +22,7 @@
     </tr>
     <tr>
   　<td>ジャンル</td>
-  　　 <td><%= f.collection_select :genre_id, Genre.all, :id, :name,{},{class:"form-control genre_i",style:"width:300px"} %></td>
+  　　 <td><%= f.collection_select :genre_id, Genre.all, :id, :name,{},{class:"form-control genre_id",style:"width:300px"} %></td>
     </tr>
     <tr>
      <td>税抜価格</td>
@@ -40,7 +40,7 @@
    </table>
 
    <div>
-    <%= f.submit "新規登録",class:"btn btn-success createbook" %>
+    <%= f.submit "新規登録",class:"btn btn-outline-danger" %>
    </div>
 
    <% end %>

@@ -1,6 +1,6 @@
 <div class="container  px-8 px-sm-8">
  <div class="row">
-   <div class="col-md-5">
+   <div class="col-md-7">
 <div class="p-3 mb-2 bg-light text-dark">ジャンル編集</div>
 
 <%= form_with model: @genre,url: admin_genre_path(@genre.id),local:true do |f| %>
@@ -18,9 +18,11 @@
   <%= f.submit '変更を保存',class:"btn btn-outline-danger"  %>
   </td>
   </tr>
-<% end %>
 
+</thead>
 </table>
+<% end %>
  </div>
  </div>
+</div>
 </div>
