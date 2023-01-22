@@ -18,8 +18,11 @@ class Customer < ApplicationRecord
   validates :postcode,  presence: true, format: {with: /\A\d{7}\z/}
    # 郵便番号のフォーマット指定 ハイフン無し７桁固定 Viewのフォーム設定
   validates :address, presence: true
-
+  validates :email,  presence: true
+  validates :encrypted_password,  presence: true
   validates :password, presence: true, length: { minimum: 8 }
+  validates :password_confirmation, presence: true, length: { minimum: 8 }
+
 
 
   def full_name
