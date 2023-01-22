@@ -19,6 +19,9 @@ class Customer < ApplicationRecord
    # 郵便番号のフォーマット指定 ハイフン無し７桁固定 Viewのフォーム設定
   validates :address, presence: true
 
+  validates :password, presence: true, length: { minimum: 8 }
+
+
   def full_name
     self.last_name + " " + self.first_name
   end
