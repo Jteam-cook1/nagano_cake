@@ -1,5 +1,5 @@
 class Public::ItemsController < ApplicationController
-   before_action :authenticate_customer!, except: [:index,:show]
+   before_action :authenticate_customer!, except: [:index,:show, :search]
 
   def index
 
@@ -17,6 +17,7 @@ class Public::ItemsController < ApplicationController
   def show
      @genres = Genre.all
      @item = Item.find(params[:id])
+     @cart_item = CartItem.new
   end
 
   def item_params

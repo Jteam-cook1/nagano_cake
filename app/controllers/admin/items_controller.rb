@@ -42,3 +42,4 @@ class Admin::ItemsController < ApplicationController
     render "index"
   end
 end
+
