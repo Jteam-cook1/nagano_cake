@@ -1,13 +1,13 @@
 <div class="container">
   <div class="col-md-12 ">
     <h4>ショッピングカート</h4>
-    
+
     <%= link_to "カートを空にする",cart_items_destroy_all_path, method: :delete, class:"btn btn-sm btn-danger" %>
 
         <table class="table table-hover table-inverse">
          <thead class="thead-light">
 
-    
+
         <table class="table table-bordered">
           <thead>
             <tr>
@@ -44,8 +44,8 @@
               <th><%#= cart_item.subtotal %></th>
               <%# @cart_item_total_price += cart_item.subtotal %>
             </tr>
-         
-        
+
+
       <% end %>
     <% end %>
      </tbody>
