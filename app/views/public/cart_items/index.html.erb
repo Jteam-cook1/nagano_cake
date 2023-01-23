@@ -24,14 +24,14 @@
           <tbody>
             <tr>
               <th>
-                <%# if item.image.attached? %>
-                <%#= image_tag item.image, size: "100x100" %>
-                <%# else %>
-                <%#= image_tag 'no_image', size: "100x100" %>
-                <%# end %>
+                <% if cart_item.image.attached? %>
+                <%= image_tag item.image, size: "100x100" %>
+                <% else %>
+                <%= image_tag 'no_image', size: "100x100" %>
+                <% end %>
                 <%= cart_item.item.name %>
               </th>
-              <th><%= cart_item.item.price.to_s(:delimited) %></th>
+              <th><%= cart_item.item.add_tax_price.to_s(:delimited) %></th>
               <th>
                 <%= f.select :amount, *[1..10] %>
                 <%= f.submit "変更", class:"btn btn-success" %>
