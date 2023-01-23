@@ -24,11 +24,6 @@
           <tbody>
             <tr>
               <th>
-                <%# if item.image.attached? %>
-                <%#= image_tag item.image, size: "100x100" %>
-                <%# else %>
-                <%#= image_tag 'no_image', size: "100x100" %>
-                <%# end %>
                 <%= cart_item.item.name %>
               </th>
               <th><%= cart_item.item.price.to_s(:delimited) %></th>
