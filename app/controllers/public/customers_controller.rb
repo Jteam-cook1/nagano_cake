@@ -39,7 +39,7 @@ class Public::CustomersController < ApplicationController
 
   def update
     @customer = Customer.find(params[:id])
-    if @customer.update(customer_params)
+    if @customer.update!(customer_params)
       flash[:success] = "会員情報が正常に保存されました"
       redirect_to customer_path(@customer)
     else
@@ -47,7 +47,7 @@ class Public::CustomersController < ApplicationController
     end
   end
 
-  # def withdraw
+  # def withdrawss
   #   @customer = current_customer
   #   @customer.withdrawal_status = true
   #   if @customer.save
