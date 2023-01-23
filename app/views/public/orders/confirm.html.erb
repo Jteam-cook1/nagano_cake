@@ -19,7 +19,7 @@
           <% current_customer.cart_items.each do |cart_item| %>
           <tr>
             <td>
-              <%= f.field :image, accept: "image/*" %>
+              <%#= f.field :image, accept: "image/*" %>
               <%= cart_item.item.name %>
             </td>
             <td><%= cart_item.item.with_tax_price %></td>
