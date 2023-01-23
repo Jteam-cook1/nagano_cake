@@ -22,7 +22,7 @@
           <td><%= link_to order.created_at, admin_order_path(order.id)  %></td>
           <td><%= order.customer.first_name + order.customer.last_name %></td>
           <td><% @order_amount = 0 %>
-              <% order.order_address.each do |order_address| %>
+              <% order.order_details.each do |order_detail| %>
                 <% @order_amount += order_address.item_amount %>
               <% end %>
               <%= @order_amount %>
