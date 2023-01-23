@@ -31,7 +31,7 @@
                 <%# end %>
                 <%= cart_item.item.name %>
               </th>
-              <th><%= cart_item.subtotal %></th>
+              <th><%= cart_item.item.price.to_s(:delimited) %></th>
               <th>
                 <%= f.select :amount, *[1..10] %>
                 <%= f.submit "変更", class:"btn btn-success" %>
