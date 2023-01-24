@@ -10,7 +10,7 @@
 　  </div>
 　  
 　  <div class="col-4 mt-5 pt-5 offset-md-2">
-      <h4>商品詳細</h4>
+      
         <% if @item.image.attached? %>
          <%= image_tag @item.image, size: "300x300" %>
         <% else %>
@@ -19,7 +19,7 @@
    
         <p><%= @item.name %></p>
         <p><%= @item.description %></p>
-        <p><%= @item.price %></p>
+        <p>￥<%= @item.add_tax_price.to_s(:delimited) %> (税込)</p>
         <p>
           <% if customer_signed_in? %>
             <%= form_with model: @cart_item,url: cart_items_path do |f| %>

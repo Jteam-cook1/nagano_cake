@@ -29,7 +29,12 @@
         </tr>
         <tr>
           <td>販売ステータス</td>
-          <td><%= @item.is_active ? '販売中' : '販売停止中' %></td>
+          <td>
+           <% if @item.is_active %>
+           <p style="color: lime;">販売中</p>
+           <% else %>
+           <p style="color: #dcdcdc">販売停止中</p>
+           <% end %>
         </tr>
       </table>
 
