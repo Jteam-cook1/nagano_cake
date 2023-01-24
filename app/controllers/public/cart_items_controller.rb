@@ -5,6 +5,9 @@ class Public::CartItemsController < ApplicationController
   def index
     @cart_items = current_customer.cart_items
     @cart_item_total_price = 0
+    @cart_items.each do |cart_item|
+    @cart_item_total_price=@cart_item_total_price+cart_item.subtotal
+  end
   end
 
   def update
