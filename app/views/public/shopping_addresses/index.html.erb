@@ -4,7 +4,7 @@
       <h2>配送先登録/一覧</h2>
     </div>
   </div>
-  <%= form_with model: @shopping_address, local: true do |f| %>
+  <%= form_with model: @shopping_address, url: shopping_addresses_path do |f| %>
   <div class="row">
     <div class="col-10">
       <table class="table table-borderless">
@@ -24,7 +24,7 @@
             <td><%= f.text_field :name, placeholder: "令和道子" %></td>
           </tr>
         </tbody>
-      </table> 
+      </table>
     </div>
     <div class="col-md-2">
       <%= f.submit "新規登録", class:"btn btn-sm btn-success" %>
@@ -39,9 +39,16 @@
       <th></th>
     </thead>
     <tbody>
+      <% @shopping_addresses.each do |shopping_address| %>
       <tr>
-        <td></td>
+        <td><%= shopping_address.postcode %></td>
+        <td><%= shopping_address.address %></td>
+        <td><%= shopping_address.name %></td>
+        <td><%= link_to "編集する", edit_shopping_address_path(shopping_address.id), class:"btn btn-success" %>
+            <%= link_to "削除する", shopping_address_path(shopping_address.id), method: :delete, class:"btn btn-sm btn-danger" %>
+        </td>
       </tr>
+      <% end %>
     </tbody>
   </table>
 </div>
