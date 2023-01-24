@@ -4,5 +4,23 @@
       <h2>配送先登録/一覧</h2>
     </div>
   </div>
-  <%= form_with model: @,
+  <%= form_with model: @shopping_address, local: true do |f| %>
+  <table class="table table-borderless">
+    <tbody>
+      <tr>
+        <th><%= f.label :postcode, "郵便番号(ハイフンなし)" %></th>
+        <td><%= f.text_field :postcode, placeholder: "0000000" %></td>
+      </tr>
+      <tr>
+        <div class="form-group">
+        <th><%= f.label :address, "住所" %></th>
+        <td><%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0", class:"form-control" %></td>
+        </div>
+      </tr>
+      <tr>
+        <th><%= f.label :name, "宛名" %></th>
+        <td><%= f.text_field :name, placeholder: "令和道子" %></td>
+      </tr>
+    </tbody>
+  </table>
 </div>
