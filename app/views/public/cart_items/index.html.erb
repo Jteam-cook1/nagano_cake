@@ -3,7 +3,7 @@
     <h4>ショッピングカート</h4>
     <%= link_to "カートを空にする",cart_items_destroy_all_path, method: :delete, class:"btn btn-sm btn-danger" %>
         <table class="table table-bordered">
-          <thead>
+          <thead class="thead-light">
             <tr>
               <th>商品名</th>
               <th>単価(税込)</th>
@@ -20,9 +20,9 @@
             <tr>
               <th>
                 <% if cart_item.item.image.attached? %>
-                <%= image_tag cart_item.item.image, size: "100x100" %>
+                <%= image_tag cart_item.item.image, size: "50x50" %>
                 <% else %>
-                <%= image_tag 'no_image', size: "100x100" %>
+                <%= image_tag 'no_image', size: "50x50" %>
                 <% end %>
                 <%= cart_item.item.name %>
               </th>
