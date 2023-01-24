@@ -13,9 +13,12 @@ class Admin::GenresController < ApplicationController
     # １.&2. データを受け取り新規登録するためのインスタンス作成
     @genre = Genre.new(genre_params)
     # 3. データをデータベースに保存するためのsaveメソッド実行
-    @genre.save
-   
-    redirect_to admin_genres_path
+    if @genre.save
+      redirect_to admin_genres_path
+    else
+      @genres = Genre.all
+      render :index
+    end
   end
 
   def edit

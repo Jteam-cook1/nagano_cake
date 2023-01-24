@@ -1,7 +1,16 @@
+<% if @item.errors.any? %>
+  <%= @item.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @item.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <div class="container ">
  <div class="row">
    <div class="col-sm-12">
-   <p><span class="bg-lights">
+   <p><span class="p-3 mb-2 bg-light text-dark">
    商品新規登録
    </span>
 
@@ -37,11 +46,11 @@
      <%= f.label :is_active, "販売停止中" %>
      </td>
     </tr>
+    <tr>
+     <td></td>
+     <td><%= f.submit "新規登録",class:"btn btn-outline-danger" %></td>
+    </tr>
    </table>
-
-   <div>
-    <%= f.submit "新規登録",class:"btn btn-outline-danger" %>
-   </div>
 
    <% end %>
    </div>
