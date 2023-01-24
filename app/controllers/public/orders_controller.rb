@@ -30,6 +30,7 @@ class Public::OrdersController < ApplicationController
     @cart_item_total_price = 0
     @order.shipping_fee = 800
     @order.payment_method = params[:order][:payment_method]
+    @order.status = params[:status]
 
 
     if params[:order][:address_number] == "1"
@@ -75,7 +76,7 @@ class Public::OrdersController < ApplicationController
 
   private
   def order_params
-    params.require(:order).permit(:payment_method, :postcode, :address, :name, :total_price)
+    params.require(:order).permit(:payment_method, :postcode, :address, :name, :total_price, :status)
   end
 
   def address_params
