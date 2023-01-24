@@ -13,9 +13,11 @@ class Admin::ItemsController < ApplicationController
       # １.&2. データを受け取り新規登録するためのインスタンス作成
     @item = Item.new(item_params)
     # 3. データをデータベースに保存するためのsaveメソッド実行
-    @item.save
-
+    if @item.save
     redirect_to admin_item_path(@item.id)
+    else
+    render :new
+    end
   end
 
   def show
@@ -28,8 +30,11 @@ class Admin::ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
-    @item.update(item_params)
+    if @item.update(item_params)
     redirect_to admin_item_path(@item.id)
+    else
+    render :edit
+    end
   end
 
   def item_params
