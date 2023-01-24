@@ -2,6 +2,6 @@
 <p>Find me in app/views/admin/orders/show.html.erb</p>
 
 <%= form_with model: @order, url: admin_order_path, method: :patch, local: true do |f| %>
-  <%= f.select :order_status, Order.order_status.keys, class: "order_status" %>
+  <%= f.select :order_status, Order.order_statuses.keys, class: "order_status" %>
   <%= f.submit "更新", class: "btn btn-outline-success" %>
-<% end %>  
+<% end %>
