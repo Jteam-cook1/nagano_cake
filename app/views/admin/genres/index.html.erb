@@ -1,3 +1,11 @@
+<% if @genre.errors.any? %>
+  <%= @genre.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @genre.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 <div class="container  px-6 px-sm-6">
  <div class="row">
    <div class="col-md-5">
@@ -38,3 +46,4 @@
 </div>
 </div>
 </div>
+
