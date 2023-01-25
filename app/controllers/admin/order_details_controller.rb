@@ -1,19 +1,31 @@
 class Admin::OrderDetailsController < ApplicationController
   before_action :authenticate_admin!
 
-  def show
-    @orders = .find(params[:id])
-    @order_details = @order.order_details
-    @sub_total = 0
-    @total_price = 0
-    @total = 0
-    @order.shipping_fee = 800
-    @order_details.each do |order_detail|
-      @total = @total += order_detail.subtotal
-      @total_price += order_detail.subtotal
+  def update
+    @order_detail = OrderDetail.find(params[:id])
+    @order = Order.find_by(id: @order_detail.order_id)
+    @order_details = @order.order_details.all
+
+    is_updated = true
+    if @order_detail.update(order_detail_params)
+      if @order_detail.status == "製作中"
+        @order.update(status: 2)
+      end
+      @order_details.each do |order_detail|
+        if order_detail.status != "製作完了"
+          is_updated = false
+        end
+      end
+      if is_updated == true
+        @order.update(status: 3)
+      end
     end
+    redirect_to admin_order_path(@order)
   end
 
-  def update
+  private
+
+  def order_detail_params
+    params.require(:order_detail).permit(:status)
   end
 end
