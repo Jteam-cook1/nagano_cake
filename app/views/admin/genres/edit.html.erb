@@ -1,14 +1,14 @@
 <div class="container  px-8 px-sm-8">
  <div class="row">
    <div class="col-md-7">
-<div class="p-3 mb-2 bg-light text-dark">ジャンル編集</div>
+<div class="p-3 mb-2">ジャンル編集</div>
 
 <%= form_with model: @genre,url: admin_genre_path(@genre.id),local:true do |f| %>
 
 <table class="table ">
 <thead class="thead-light">
   <tr>
-  <td> 
+  <td>
   ジャンル名
   </td>
   <td>
