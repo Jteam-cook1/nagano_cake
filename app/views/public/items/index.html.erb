@@ -1,44 +1,36 @@
 <div class="container  px-8 px-sm-8">
-  
   <div class="row">
-    
-    <div class="col-2 mt-4 pt-4">
-      <div style="border: double;">
-        <p>ジャンル検索</p>
-        <% @genres.each do |genre| %>
-          <p><%= link_to genre.name,items_path(genre_id: genre.id) %></p>
-        <% end %>
-      </div>
-    </div>
-    
-    <div class="col-8 mt-5 pt-6 offset-md-2">
-      <h4><%= @title %>一覧</h4>
-      <div class="d-flex flex-wrap">
-        <% @items.each do |item| %>
-          <div>
-            <div class="p-2">
-              <% if item.image.attached? %>
-                <%= image_tag item.image, size: "150x150" %>
-              <% else %>
-                <%= image_tag 'no_image', size: "150x150" %>
-              <% end %>
-            </div>
-            
-            <div class="p-2">
-              <%= link_to item.name, item_path(item.id)  %>
-            </div>
-            
-            <div class="p-2">
-              ￥<%= item.price %>
-            </div>
-          </div>
-        <% end %>
-      </div>
-      
-      <ul class="pagination">
-        <%= paginate  @items %>
-      </ul>
-    </div>
-    
-  </div>
+   <div class="col-2 mt-4 pt-4" style="border: double;">
+　  <p>ジャンル検索</p>
+    <% @genres.each do |genre| %>
+
+    <p><%= link_to genre.name,items_path(genre_id: genre.id) %></p>
+    <% end %>
+
+   </div>
+ <div class="col-6 mt-5 pt-5 offset-md-2">
+  <h4><%= @title %>一覧</h4>
+
+ <div class="d-flex flex-wrap">
+  <% @items.each do |item| %>
+ <div>
+ <div class="p-2">
+  <% if item.image.attached? %>
+  <%= image_tag item.image, size: "100x100" %>
+  <% else %>
+  <%= image_tag 'no_image', size: "100x100" %>
+  <% end %>
+ </div>
+ <div class="p-2">
+  <%= link_to item.name, item_path(item.id)  %>
+ </div>
+ <div class="p-2">
+  <%= item.price %>
+ </div>
+ </div>
+  <% end %>
+</div>
+ <ul class="pagination">
+ <%= paginate  @items %>
+</ul>
 </div>
