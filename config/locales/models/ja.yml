@@ -14,3 +14,25 @@ ja:
         password: パスワード
         password_confirmation: パスワード（確認用）
         email: メールアドレス
+
+    models:
+      item: 商品
+    attributes:
+      item:
+        name: 商品名
+        description: 商品説明
+        price: 税抜価格
+
+
+    models:
+      genre: ジャンル
+    attributes:
+      genre:
+        name: ジャンル名
+
+
+
+
+
+
+
