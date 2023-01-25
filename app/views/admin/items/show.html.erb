@@ -31,14 +31,18 @@
           <td>販売ステータス</td>
           <td>
            <% if @item.is_active %>
-           <p style="color: lime;">販売中</p>
+           <p style="color: red;">販売中</p>
            <% else %>
-           <p style="color: #dcdcdc">販売停止中</p>
+           <p style="color: black">販売停止中</p>
            <% end %>
         </tr>
+        <tr>
+          <td></td>
+           <td><%= link_to "編集する", edit_admin_item_path(@item.id),class:"btn btn-outline-danger mt-5" %></td>
+        </tr>      
       </table>
 
-      <%= link_to "編集する", edit_admin_item_path(@item.id),class:"btn btn-outline-danger mt-5" %>
+      
     </div>
   </div>
 </div>
