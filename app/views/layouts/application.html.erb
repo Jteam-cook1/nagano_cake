@@ -5,16 +5,18 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <!--assetsのstylesheetsを参照-->
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <!--javascriptのstylesheetsを参照-->
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-  <div style ="min-height:100vh; box-sizing: border-box;">
+  <div class="background" style ="min-height:100vh; box-sizing: border-box;">
     <header>
       <nav>
-        <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+        <div class="background d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
           <ul class="nav justify-content-end">
             <li class="nav-item">
               <h1><%= link_to("LOGO", root_path) %></h1>
@@ -40,7 +42,7 @@
     <%= yield %>
 
     <footer>
-      <div class="bg-white border-top" style="height: 100px; margin-top: 50px;">
+      <div class="background" style="height: 1px; margin-top: 1px;">
       </div>
     </footer>
     </div>
