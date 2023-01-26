@@ -1,7 +1,7 @@
 class Public::OrdersController < ApplicationController
+before_action :cart_item_check, only:[:new, :confirm, :create]
 
   def new
-
     @order = Order.new
   end
 
@@ -17,8 +17,8 @@ class Public::OrdersController < ApplicationController
         order_detail.total_price = cart.item.price
         order_detail.save
       end
-      redirect_to orders_complete_path
       cart_items.destroy_all
+      redirect_to orders_complete_path
     else
       @order = Order.new(order_params)
       render :new
@@ -47,15 +47,10 @@ class Public::OrdersController < ApplicationController
       @order.address = @shopping_address.address
       @order.name = @shopping_address.name
 
-    elsif params[:order][:address_number] == "3"
-
-      if @order.save
-        redirect_to orders_complete_path
-      else
-        render :new
-      end
-    end  
+    # elsif params[:order][:address_number] == "3"
+    end
     @cart_items_total_price = 0
+
   end
 
   def complete
@@ -87,5 +82,12 @@ class Public::OrdersController < ApplicationController
 
   def address_params
     params.require(:order).permit(:name, :address)
+  end
+
+  def cart_item_check
+   cart_item = current_customer.cart_items.all
+   if cart_item.empty?
+     redirect_to cart_items_path
+   end
   end
 end
