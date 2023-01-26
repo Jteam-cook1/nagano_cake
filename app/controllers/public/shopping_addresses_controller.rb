@@ -1,13 +1,13 @@
 class Public::ShoppingAddressesController < ApplicationController
 
   def index
-    @shopping_addresses = ShoppingAddress.all
+    @shopping_addresses = current_customer.shopping_addresses
     @shopping_address = ShoppingAddress.new
   end
 
   def edit
     @shopping_address = ShoppingAddress.find(params[:id])
-    #@shopping_address = ShoppingAddress.new
+    # @shopping_address = ShoppingAddress.new
   end
 
   def create
