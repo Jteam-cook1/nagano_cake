@@ -1,7 +1,7 @@
 class Public::ShoppingAddressesController < ApplicationController
 
   def index
-    @shopping_addresses = ShoppingAddress.all
+    @shopping_addresses = current_customer.shopping_addresses
     @shopping_address = ShoppingAddress.new
   end
 
