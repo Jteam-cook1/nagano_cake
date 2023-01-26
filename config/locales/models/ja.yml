@@ -2,6 +2,7 @@ ja:
   activerecord:
     models:
       customer: お客様情報
+      order: 注文
       item: 商品
       genre: ジャンル
       shopping_address: 配送先
@@ -17,23 +18,21 @@ ja:
         password: パスワード
         password_confirmation: パスワード（確認用）
         email: メールアドレス
-
-
       item:
         name: 商品名
         description: 商品説明
         price: 税抜価格
-
       genre:
           name: ジャンル名
-
-
       shopping_address:
         postcode: 郵便番号
         address: 住所
         name: 宛名
-
-
+      order:
+        customer: 会員
+        postcode: 郵便番号
+        address: 住所
+        name: 宛名
 
 
 
