@@ -25,26 +25,6 @@ class Public::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
 
-  # def new
-  #   @customer = Customer.new
-  # end
-
-  # def create
-  # customer = Customer.find_by(email: params[:session][:email])
-  #   if customer && customer.authenticate(params[:session][:password])
-  #     session[:customer_id] = customer.id
-  #     redirect_to root_path
-  #   else
-  #     render :new
-  #   end
-  # end
-
-  # def destroy
-  #   @customer = Customer.find(params[:id])
-  #   @customer.destroy
-  #   redirect_to root_path
-  # end
-
   protected
 
   def reject_withdraw_customer
@@ -57,14 +37,12 @@ class Public::SessionsController < Devise::SessionsController
     end
   end
 
-
   def after_sign_in_path_for(resource)
     root_path(current_customer)
   end
   def after_sign_out_path_for(resource)
     root_path(current_customer)
   end
-
 
    private
   def customer_params

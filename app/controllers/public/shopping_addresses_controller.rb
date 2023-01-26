@@ -7,7 +7,7 @@ class Public::ShoppingAddressesController < ApplicationController
 
   def edit
     @shopping_address = ShoppingAddress.find(params[:id])
-    #@shopping_address = ShoppingAddress.new
+    # @shopping_address = ShoppingAddress.new
   end
 
   def create
