@@ -2,9 +2,6 @@ class Customer < ApplicationRecord
   has_many :cart_items
   has_many :shopping_addresses
   has_many :orders
-  #has_many :addresses
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
@@ -22,18 +19,6 @@ class Customer < ApplicationRecord
   validates :email,  presence: true
   validates :password, presence: true, length: { minimum: 6 }, on: :create
   validates :password_confirmation, presence: true, length: { minimum: 6 }, on: :create
-
-
-  # with_options on: :step1 do
-  #   validates :last_name,  presence: true
-  #   validates :first_name, presence: true
-  #   validates :last_name_kana,  presence: true, format: {with: /\A[\p{katakana}\p{blank}ー－]+\z/, message: 'はカタカナで入力して下さい。'}
-  #   validates :first_name_kana, presence: true, format: {with: /\A[\p{katakana}\p{blank}ー－]+\z/, message: 'はカタカナで入力して下さい。'}
-  #   validates :phone_number, presence: true, format: {with: /\A\d{10}$|^\d{11}\z/, message: '10桁か11桁の電話番号を入力してください。'}
-  #   validates :postcode,  presence: true, format: {with: /\A\d{7}\z/}
-  #   validates :address, presence: true
-  #   validates :email,  presence: true
-  # end
 
   def full_name
     self.last_name + " " + self.first_name

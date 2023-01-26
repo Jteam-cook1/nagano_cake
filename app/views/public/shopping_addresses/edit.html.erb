@@ -14,7 +14,7 @@
     </ul>
     <% end %>
 
-  <%= form_with model: @shopping_address, url: shopping_addresses_path(@shopping_address.id) do |f| %>
+  <%= form_with model: @shopping_address, url: shopping_address_path(@shopping_address.id),local:true do |f| %>
   <div class="row">
     <div class="col-10">
       <table class="table table-borderless">
