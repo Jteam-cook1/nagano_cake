@@ -48,13 +48,15 @@ class Public::OrdersController < ApplicationController
       @order.name = @shopping_address.name
 
     elsif params[:order][:address_number] == "3"
-      
+
       if @order.save
         redirect_to orders_complete_path
       else
         render :new
       end
+
     end
+
     @cart_items_total_price = 0
   end
 
