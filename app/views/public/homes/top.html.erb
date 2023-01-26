@@ -1,12 +1,18 @@
 <div class="container  px-8 px-sm-8">
   <div class="row">
-    <div class="col-2 mt-3 pt-3" style="border: double;">
-　  <p>ジャンル検索</p>
-　  <% @genres.each do |genre| %>
-    <p><%= link_to genre.name,items_path(genre_id: genre.id) %></p>
-    <% end %>
-    </div>
-
+    <div class="col-2 mt-2 pt-2">
+    <div style="border: double;">
+      <div style="text-align: center">
+　     <p>ジャンル検索</p>
+　    </div>
+　       <% @genres.each do |genre| %>
+　     <div style="text-align: center">
+         <p><%= link_to genre.name,items_path(genre_id: genre.id) %></p>
+       </div>
+         <% end %>
+      </div>
+      </div>
+ 
     <div class="main-container col-7 pt-5 offset-1">
       <p class="top-font">
        ようこそ、ながのCAKEへ！<br>
@@ -16,7 +22,7 @@
       </p>
     </div>
 
-    <div class="col-7  pt-5 offset-2">
+    <div class="col-7 mt-3 pt-3 offset-2">
       <h4><%= @title %></h4>
 
     <table>
@@ -25,9 +31,13 @@
     <th>
     <div class="p-2">
      <% if item.image.attached? %>
+     <%= link_to item_path(item.id) do %>
      <%= image_tag item.image, size: "200x150" %>
+     <% end %>
      <% else %>
+     <%= link_to item_path(item.id) do %>
      <%= image_tag 'no_image', size: "200x150" %>
+     <% end %>
      <% end %>
     </div>
 
