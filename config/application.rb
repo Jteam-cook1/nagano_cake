@@ -12,7 +12,11 @@ module NaganoCake
     config.load_defaults 6.1
 
     config.i18n.default_locale = :ja
+<<<<<<< HEAD
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
+=======
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*{rb,yml}.yml').to_s]
+>>>>>>> origin/develop
 
     # Configuration for the application, engines, and railties goes here.
     #
