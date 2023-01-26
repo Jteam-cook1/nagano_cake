@@ -2,6 +2,7 @@ ja:
   activerecord:
     models:
       customer: お客様情報
+      order: 注文
       item: 商品
       genre: ジャンル
       shopping_address: 配送先
@@ -33,7 +34,8 @@ ja:
         address: 住所
         name: 宛名
 
-
+　　　order:
+　　　  customer: 会員
 
 
 
