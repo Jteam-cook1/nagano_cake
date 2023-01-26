@@ -3,8 +3,6 @@ class Order < ApplicationRecord
     has_many :order_details
     has_one_attached :image
 
-    byebug
-
     validates :postcode, presence: true
     validates :address, presence: true
     validates :name, presence: true
