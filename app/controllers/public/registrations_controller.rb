@@ -60,23 +60,10 @@ class Public::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
 
-  # def new
-  #   @customer = Customer.new
-  # end
-
-  # def create
-  #   @customer = Customer.new(customer_params)
-  #   render :new and return if params[:back]
-  #   super
-  # end
-
-
-
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :last_name_kana, :first_name_kana, :postcode, :address, :phone_number])
   end
 
-  # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
     devise_parameter_sanitizer.permit(:account_update, keys: [:last_name, :first_name, :last_name_kana, :first_name_kana, :postcode, :address, :phone_number])
   end
@@ -92,10 +79,5 @@ class Public::RegistrationsController < Devise::RegistrationsController
   def after_sign_up_path_for(resource)
     customer_path(resource)
   end
-
-  # The path used after sign up.
-
-
-
 
 end
