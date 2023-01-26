@@ -7,7 +7,7 @@ class Public::ShoppingAddressesController < ApplicationController
 
   def edit
     @shopping_address = ShoppingAddress.find(params[:id])
-    @shopping_address = ShoppingAddress.new
+    #@shopping_address = ShoppingAddress.new
   end
 
   def create
@@ -22,11 +22,11 @@ class Public::ShoppingAddressesController < ApplicationController
   end
 
   def update
-    shopping_address = ShoppingAddress.find(params[:id])
-    if shopping_address.update(shopping_address_params)
-      redirect_to shopping_addresses_path
+    @shopping_address = ShoppingAddress.find(params[:id])
+    if @shopping_address.update(shopping_address_params)
+      redirect_to shopping_addresses_path(@shopping_address.id)
     else
-      render :edit
+     render :edit
     end
   end
 

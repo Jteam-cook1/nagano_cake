@@ -4,6 +4,7 @@ ja:
       customer: お客様情報
       item: 商品
       genre: ジャンル
+      shopping_address: 配送先
     attributes:
       customer:
         first_name: （名）
@@ -17,16 +18,20 @@ ja:
         password_confirmation: パスワード（確認用）
         email: メールアドレス
 
-      
+
       item:
         name: 商品名
         description: 商品説明
         price: 税抜価格
-            
+
       genre:
           name: ジャンル名
 
 
+      shopping_address:
+        postcode: 郵便番号
+        address: 住所
+        name: 宛名
 
 
 
