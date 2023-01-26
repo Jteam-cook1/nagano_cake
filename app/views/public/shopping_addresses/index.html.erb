@@ -4,6 +4,16 @@
       <h2>配送先登録/一覧</h2>
     </div>
   </div>
+
+  <% if @shopping_address.errors.any? %>
+    <%= @shopping_address.errors.count %>件のエラーが発生しました
+    <ul>
+      <% @shopping_address.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+    <% end %>
+
   <%= form_with model: @shopping_address, url: shopping_addresses_path do |f| %>
   <div class="row">
     <div class="col-10">
