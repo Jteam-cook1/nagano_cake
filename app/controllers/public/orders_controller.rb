@@ -38,7 +38,7 @@ before_action :cart_item_check, only:[:new, :confirm, :create]
 
       @order.postcode = current_customer.postcode
       @order.address = current_customer.address
-      @order.name = current_customer.first_name + current_customer.last_name
+      @order.name = current_customer.last_name + current_customer.first_name
 
     elsif params[:order][:address_number] == "2"
 
