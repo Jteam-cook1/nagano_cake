@@ -24,7 +24,9 @@ class Public::ShoppingAddressesController < ApplicationController
   def update
     @shopping_address = ShoppingAddress.find(params[:id])
     if @shopping_address.update(shopping_address_params)
+
       redirect_to shopping_addresses_path(@shopping_address.id)
+
     else
      render :edit
     end
