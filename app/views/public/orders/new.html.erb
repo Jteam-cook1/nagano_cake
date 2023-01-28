@@ -19,7 +19,7 @@
               <%= form_with model: @order, url: orders_confirm_path, local: true do |f| %>
                 <div class="row ml-3">
                     <div class="col-lg-3 ml-2">
-                      <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+                      <%= f.radio_button :payment_method, Order.payment_methods.key(0), checked: true %>
                       <%= f.label :payment_method_credit_card, "クレジットカード" %>
                       <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
                       <%= f.label :payment_method_transfer, "銀行振込" %>
