@@ -48,9 +48,20 @@ before_action :cart_item_check, only:[:new, :confirm, :create]
       @order.name = @shopping_address.name
 
 
-    # elsif params[:order][:address_number] == "3"
-    end
+    elsif params[:order][:address_number] == "3"
+       if params[:order][:postcode].empty?
+         render :new
 
+
+       elsif params[:order][:address].empty?
+         render :new
+
+
+       elsif params[:order][:name].empty?
+         render :new
+       end
+
+    end
     @cart_items_total_price = 0
 
   end

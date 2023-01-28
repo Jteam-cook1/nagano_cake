@@ -13,7 +13,9 @@ class Item < ApplicationRecord
   end
 
   def self.search(keyword)
-    where(["name like?", "%#{keyword}%"])
+    where(["name like?", "%#{keyword}%"]).where(is_active: true)
+
+
   end
 
   def with_tax_price
