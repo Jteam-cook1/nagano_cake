@@ -5,6 +5,10 @@ application up and running.
 
 Things you may want to cover:
 
+* 管理者のログイン　メールアドレスとパスワード
+メールアドレス：sample-email@admin
+パスワード：admin1
+
 * Ruby version
 
 * System dependencies
@@ -21,4 +25,4 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...
+*
